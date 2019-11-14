@@ -1,5 +1,10 @@
 emailProvider: {}
 rules:
+  - name: 1st Rule
+    script: ./rules/1st Rule.js
+    stage: login_success
+    enabled: true
+    order: 2
   - name: Add country to the user profile
     script: ./rules/Add country to the user profile.js
     stage: login_success

@@ -1,0 +1,207 @@
+emailProvider: {}
+rules:
+  - name: Add country to the user profile
+    script: ./rules/Add country to the user profile.js
+    stage: login_success
+    enabled: true
+    order: 1
+pages:
+  - name: login
+    enabled: true
+    html: ./pages/login.html
+resourceServers: []
+clients:
+  - name: React App
+    allowed_clients: []
+    allowed_logout_urls:
+      - 'http://localhost:3000'
+    app_type: spa
+    callbacks:
+      - 'http://localhost:3000'
+    client_aliases: []
+    cross_origin_auth: false
+    custom_login_page_on: true
+    grant_types:
+      - authorization_code
+      - implicit
+      - refresh_token
+    is_first_party: true
+    is_token_endpoint_ip_header_trusted: false
+    jwt_configuration:
+      alg: RS256
+      lifetime_in_seconds: 36000
+      secret_encoded: false
+    native_social_login:
+      apple:
+        enabled: false
+    oidc_conformant: true
+    sso_disabled: false
+    token_endpoint_auth_method: none
+    web_origins:
+      - 'http://localhost:3000'
+  - name: auth0-deploy-cli-extension
+    allowed_clients: []
+    app_type: non_interactive
+    callbacks: []
+    client_aliases: []
+    cross_origin_auth: false
+    custom_login_page_on: true
+    grant_types:
+      - authorization_code
+      - implicit
+      - refresh_token
+      - client_credentials
+    is_first_party: true
+    is_token_endpoint_ip_header_trusted: false
+    jwt_configuration:
+      alg: RS256
+      lifetime_in_seconds: 36000
+      secret_encoded: false
+    native_social_login:
+      apple:
+        enabled: false
+    oidc_conformant: true
+    sso_disabled: false
+    token_endpoint_auth_method: none
+databases:
+  - name: Username-Password-Authentication
+    strategy: auth0
+    enabled_clients:
+      - React App
+      - auth0-deploy-cli-extension
+    is_domain_connection: false
+    options:
+      mfa:
+        active: true
+        return_enroll_settings: true
+      passwordPolicy: good
+      strategy_version: 2
+      brute_force_protection: true
+    realms:
+      - Username-Password-Authentication
+connections:
+  - name: facebook
+    strategy: facebook
+    enabled_clients: []
+    is_domain_connection: false
+    options:
+      client_id: ''
+      client_secret: ''
+      public_profile: true
+      email: false
+      groups_access_member_info: false
+      publish_to_groups: false
+      user_age_range: false
+      user_birthday: false
+      user_events: false
+      user_friends: false
+      user_gender: false
+      user_hometown: false
+      user_likes: false
+      user_link: false
+      user_location: false
+      user_photos: false
+      user_posts: false
+      user_tagged_places: false
+      user_videos: false
+      ads_management: false
+      ads_read: false
+      business_management: false
+      leads_retrieval: false
+      manage_pages: false
+      pages_manage_cta: false
+      pages_manage_instant_articles: false
+      pages_show_list: false
+      pages_messaging: false
+      pages_messaging_phone_number: false
+      pages_messaging_subscriptions: false
+      publish_pages: false
+      publish_video: false
+      read_audience_network_insights: false
+      read_insights: false
+      read_page_mailboxes: false
+      manage_notifications: false
+      publish_actions: false
+      read_stream: false
+      read_mailbox: false
+      user_groups: false
+      user_managed_groups: false
+      user_status: false
+      allow_context_profile_field: false
+      scope: public_profile
+  - name: github
+    strategy: github
+    enabled_clients: []
+    is_domain_connection: false
+    options:
+      client_id: ''
+      client_secret: ''
+      profile: true
+      email: false
+      read_user: false
+      follow: false
+      public_repo: false
+      repo: false
+      repo_deployment: false
+      repo_status: false
+      delete_repo: false
+      notifications: false
+      gist: false
+      read_repo_hook: false
+      write_repo_hook: false
+      admin_repo_hook: false
+      read_org: false
+      write_org: false
+      admin_org: false
+      read_public_key: false
+      write_public_key: false
+      admin_public_key: false
+      scope: []
+  - name: google-oauth2
+    strategy: google-oauth2
+    enabled_clients: []
+    is_domain_connection: false
+    options:
+      email: true
+      profile: true
+      scope:
+        - email
+        - profile
+  - name: line
+    strategy: line
+    enabled_clients:
+      - React App
+      - auth0-deploy-cli-extension
+    is_domain_connection: false
+    options:
+      client_id: ''
+      client_secret: ''
+      profile: true
+      email: false
+      scope:
+        - openid
+        - profile
+tenant:
+  enabled_locales:
+    - en
+  flags:
+    disable_clickjack_protection_headers: false
+rulesConfigs: []
+emailTemplates: []
+clientGrants: []
+guardianFactors:
+  - name: duo
+    enabled: false
+  - name: email
+    enabled: false
+  - name: otp
+    enabled: false
+  - name: push-notification
+    enabled: false
+  - name: sms
+    enabled: false
+guardianFactorProviders: []
+guardianFactorTemplates: []
+roles: []
+branding: {}
+prompts: {}

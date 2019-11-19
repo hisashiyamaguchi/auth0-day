@@ -25,6 +25,11 @@ rules:
     stage: login_success
     enabled: true
     order: 6
+  - name: 6th Rule
+    script: ./rules/6th Rule.js
+    stage: login_success
+    enabled: true
+    order: 7
   - name: Add country to the user profile
     script: ./rules/Add country to the user profile.js
     stage: login_success
